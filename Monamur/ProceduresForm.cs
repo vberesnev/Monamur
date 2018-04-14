@@ -119,7 +119,8 @@ namespace Monamur
                     Procedure editProcedure = new Procedure();
                     editProcedure.ID = Convert.ToInt32(dgw.SelectedRows[0].Cells[0].Value);
                     editProcedure.GetInfo();
-
+                    //int row = dgw.CurrentRow.Index;
+                    
                     /*editProcedure.ProcedureName = dgw.SelectedRows[0].Cells[1].Value.ToString();
                     editProcedure.AnimalID = Convert.ToInt32(dgw.SelectedRows[0].Cells[2].Value);
                     editProcedure.Animal = dgw.SelectedRows[0].Cells[3].Value.ToString();
@@ -137,6 +138,9 @@ namespace Monamur
                         this.v_proceduresTableAdapter.FillByAnimalId(this.monamurDBDataSet.V_procedures, 2);
                     }
                     else this.v_proceduresTableAdapter.FillByAnimalId(this.monamurDBDataSet.V_procedures, 3);
+                    /*dgw.Rows[0].Selected = false;
+                    dgw.Rows[row].Selected = true;*/
+                    SelectRow(editProcedure.ID);
                 }
             }
 
@@ -163,6 +167,11 @@ namespace Monamur
         private void mouse_dataGridView_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             edit_button_Click(sender, null);
+        }
+
+        public void SelectRow (int id)
+        {
+            vproceduresBindingSource.Position = vproceduresBindingSource.Find("id", id.ToString());
         }
     }
 }

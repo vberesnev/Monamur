@@ -30,6 +30,11 @@ namespace Monamur
             this.v_usersTableAdapter.FillByMaster(this.monamurDBDataSet.V_users);
             // TODO: данная строка кода позволяет загрузить данные в таблицу "monamurDBDataSet.V_procedures". При необходимости она может быть перемещена или удалена.
             //  this.v_proceduresTableAdapter.Fill(this.monamurDBDataSet.V_procedures);
+            if (user.GetUserRole() != "Администратор")
+            {
+                master_comboBox.SelectedValue = user.ID;
+            }
+
         }
 
         private void cancel_button_Click(object sender, EventArgs e)
@@ -99,6 +104,9 @@ namespace Monamur
             }
             else if (sum_textBox.Text == "Ошибка") {
                 MessageBox.Show("Введите стоимость процедуры цифрами");
+            }
+            else if (payment_comboBox.Text == "НЕ ВЫБРАНО") {
+                MessageBox.Show("Укажите вид оплаты");
             }
             else
             {

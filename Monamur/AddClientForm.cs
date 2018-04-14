@@ -36,7 +36,8 @@ namespace Monamur
                                                 Convert.ToInt32(character_numericUpDown.Value), 
                                                 phone_textBox.Text, social_textBox.Text, 
                                                 about_textBox.Text, 
-                                                Convert.ToInt32(bonus_textBox.Text));
+                                                Convert.ToInt32(bonus_textBox.Text),
+                                                sms_checkBox.Checked);
                 if (newClient.AddClient() == true) {
                     user.AddLog(String.Format("Добавил клиента <{0}> в базу КЛИЕНТОВ", newClient.Fio));
                     this.Close();

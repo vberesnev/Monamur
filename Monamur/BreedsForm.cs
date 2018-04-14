@@ -28,6 +28,12 @@ namespace Monamur
             // TODO: данная строка кода позволяет загрузить данные в таблицу "monamurDBDataSet.Breeds". При необходимости она может быть перемещена или удалена.
             this.breedsTableAdapter.Fill(this.monamurDBDataSet.Breeds);
             dt = this.monamurDBDataSet.Animals.Copy();
+
+            if (user.GetUserRole() != "Администратор")
+            {
+                deleteBreed_toolStripButton.Enabled = false;
+            }
+
         }
 
         private void save_button_Click(object sender, EventArgs e)
@@ -75,7 +81,7 @@ namespace Monamur
             {
                 user.AddLog(log);
             }
-            this.Close();
+            //this.Close();
         }
 
         private string GetAnimal(int id) {
@@ -89,6 +95,25 @@ namespace Monamur
             string textTofind = find_toolStripTextBox.Text;
             string filter = String.Format("breed like '%{0}%'", textTofind);
             breedsBindingSource.Filter = filter;
+        }
+
+        private void deleteBreed_toolStripButton_Click(object sender, EventArgs e)
+        {
+            int breedID = Convert.ToInt32(breeds_dataGridView.SelectedRows[0].Cells["idDataGridViewTextBoxColumn"].Value);
+            string breed = breeds_dataGridView.SelectedRows[0].Cells["breedDataGridViewTextBoxColumn"].Value.ToString();
+            int animal = Convert.ToInt32(breeds_dataGridView.SelectedRows[0].Cells["animalidDataGridViewTextBoxColumn"].Value);
+            DialogResult dialog = MessageBox.Show(String.Format("Вы действительно хотите удалить породу <{0}> из справочника ПОРОД?", breed),
+                                                      "ВНИМАНИЕ",
+                                                      MessageBoxButtons.YesNo);
+            if (dialog == DialogResult.Yes)
+            {
+                user.AddLog(String.Format("Удалил породу: <{0}>, животное:<{1}> из справочника ПОРОДЫ",
+                                           breed,
+                                           GetAnimal(animal)));
+                this.breedsTableAdapter.DeleteBreed(breedID);
+            }
+
+            this.breedsTableAdapter.Fill(this.monamurDBDataSet.Breeds);
         }
     }
 }

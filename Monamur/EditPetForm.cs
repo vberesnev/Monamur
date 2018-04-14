@@ -33,8 +33,16 @@ namespace Monamur
             name_textBox.Text = pet.Name;
             client_textBox.Text = pet.ClientName;
             breed_textBox.Text = pet.Breed;
-            bday_dateTimePicker.Value = pet.Bday;
-            age_textBox.Text = pet.Age.ToString();
+            if (pet.Bday == DateTime.Parse("01.01.0001 0:00:00"))
+            {
+                unknownBD_radioButton.Checked = true;
+            }
+            else {
+                unknownBD_radioButton.Checked = false;
+                bday_dateTimePicker.Value = pet.Bday;
+            }
+            
+            //age_textBox.Text = pet.Age.ToString();
             about_textBox.Text = pet.About;
             if (pet.ALive == true) {
                 alive_checkBox.Checked = true;
@@ -66,11 +74,11 @@ namespace Monamur
 
         private void bday_dateTimePicker_ValueChanged(object sender, EventArgs e)
         {
-            int age = 0;
+            /*int age = 0;
             age = DateTime.Now.Year - bday_dateTimePicker.Value.Year;
             if (DateTime.Now.Month < bday_dateTimePicker.Value.Month ||
                  (DateTime.Now.Month == bday_dateTimePicker.Value.Month && DateTime.Now.Day < bday_dateTimePicker.Value.Day)) age--;
-            age_textBox.Text = age.ToString();
+            age_textBox.Text = age.ToString();*/
         }
 
         private void save_button_Click(object sender, EventArgs e)
@@ -92,12 +100,12 @@ namespace Monamur
                 if (bday_radioButton.Checked)
                 {
                     pet.Bday = bday_dateTimePicker.Value;
-                    pet.Age = Convert.ToInt32(age_textBox.Text);
+                    //pet.Age = Convert.ToInt32(age_textBox.Text);
                 }
                 else
                 {
-                    pet.Age = Convert.ToInt32(age_textBox.Text);
-                    pet.Bday = new DateTime(DateTime.Now.Year - pet.Age, DateTime.Now.Month, 1);
+                    //pet.Age = Convert.ToInt32(age_textBox.Text);
+                    pet.Bday = DateTime.Parse("1900-01-01");
                 }
                 pet.About = about_textBox.Text;
                 if (alive_checkBox.Checked)
@@ -154,7 +162,7 @@ namespace Monamur
             if (bday_radioButton.Checked)
             {
                 bday_dateTimePicker.Enabled = true;
-                bday_dateTimePicker.Value = pet.Bday;
+                //bday_dateTimePicker.Value = pet.Bday;
             }
             else
             {
@@ -163,20 +171,7 @@ namespace Monamur
             }
         }
 
-        private void age_radioButton_CheckedChanged(object sender, EventArgs e)
-        {
-            if (age_radioButton.Checked)
-            {
-                age_textBox.ReadOnly = false;
-                
-                age_textBox.Focus();
-            }
-            else
-            {
-                age_textBox.Text = pet.Age.ToString();
-                age_textBox.ReadOnly = true;
-            }
-        }
+        
 
         private void selectBreed_button_Click(object sender, EventArgs e)
         {
@@ -213,6 +208,20 @@ namespace Monamur
         {
             PetsAllProceduresForm PAPF = new PetsAllProceduresForm(pet);
             PAPF.ShowDialog();
+        }
+
+        private void unknownBD_radioButton_CheckedChanged(object sender, EventArgs e)
+        {
+            if (unknownBD_radioButton.Checked)
+            {
+                bday_dateTimePicker.Enabled = false;
+                //bday_dateTimePicker.Value = pet.Bday;
+            }
+            else
+            {
+                //bday_dateTimePicker.Value = DateTime.Now;
+                bday_dateTimePicker.Enabled = true;
+            }
         }
     }
 }

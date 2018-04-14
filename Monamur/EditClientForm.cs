@@ -34,6 +34,7 @@ namespace Monamur
             social_textBox.Text = client.Social;
             about_textBox.Text = client.About;
             bonus_textBox.Text = client.Bonus.ToString();
+            sms_checkBox.Checked = client.Sms;
         }
 
         private void cancel_button_Click(object sender, EventArgs e)
@@ -55,15 +56,16 @@ namespace Monamur
                 client.Social = social_textBox.Text;
                 client.About = about_textBox.Text;
                 client.Bonus = Convert.ToInt32(bonus_textBox.Text);
+                client.Sms = sms_checkBox.Checked;
                 if (client.UpdateClient() == true)
                 {
                     user.AddLog(String.Format("Изменил параметры КЛИЕНТА ФИО: <{0}> -> <{1}>, " +
                                               "Характер: <{2}> -> <{3}>, Телефон: <{4}> -> <{5}>, " +
                                               "Соц.сети: <{6}> -> <{7}>, Инфо: <{8}> -> <{9}>," +
-                                              "Бонусы: <{10}> -> <{11}> в справочнике КЛИЕНТОВ", oldClient.Fio, client.Fio,
+                                              "Бонусы: <{10}> -> <{11}>, СМС <{12}> -> <{13}> в справочнике КЛИЕНТОВ", oldClient.Fio, client.Fio,
                                               oldClient.Character, client.Character, oldClient.Phone, client.Phone,
                                               oldClient.Social, client.Social, oldClient.About, client.About,
-                                              oldClient.Bonus, client.Bonus));
+                                              oldClient.Bonus, client.Bonus, oldClient.Sms, client.Sms));
                     if (addVisit)
                     {
                         AddVisitForm AVF = this.Owner as AddVisitForm;
@@ -82,6 +84,17 @@ namespace Monamur
                 this.Close();
             }
            
+        }
+
+        private void EditClientForm_Load(object sender, EventArgs e)
+        {
+            if (user.GetUserRole() != "Администратор")
+            {
+                phone_textBox.Visible = false;
+                social_textBox.Visible = false;
+                labelPhone.Text = "Информация недоступна";
+                labelSocial.Text = "Информация недоступна";
+            }
         }
     }
 }

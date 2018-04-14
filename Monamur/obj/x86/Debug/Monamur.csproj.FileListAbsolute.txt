@@ -34,3 +34,4 @@ C:\C#\Monamur\Monamur\obj\x86\Debug\Monamur.csproj.GenerateResource.Cache
 C:\C#\Monamur\Monamur\obj\x86\Debug\Monamur.csproj.CoreCompileInputs.cache
 C:\C#\Monamur\Monamur\obj\x86\Debug\Monamur.exe
 C:\C#\Monamur\Monamur\obj\x86\Debug\Monamur.pdb
+C:\C#\Monamur\Monamur\obj\x86\Debug\Monamur.csprojResolveAssemblyReference.cache

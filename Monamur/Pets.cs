@@ -45,7 +45,7 @@ namespace Monamur
 
         public void AddPet() {
             MonamurDBDataSetTableAdapters.PetsTableAdapter t_petsTableAdap = new MonamurDBDataSetTableAdapters.PetsTableAdapter();
-            if (ClientId == 0 || BreedId == 0)
+            /*if (ClientId == 0 || BreedId == 0)
             {
                 if (BreedId == 0 && ClientId == 0)
                 {
@@ -58,6 +58,13 @@ namespace Monamur
                 else {
                     t_petsTableAdap.InsertPet(Name, Bday, ClientId, null, About);
                 }
+            }
+            else {
+                t_petsTableAdap.InsertPet(Name, Bday, ClientId, BreedId, About);
+            }*/
+            if (Bday == DateTime.Parse("1900-01-01"))
+            {
+                t_petsTableAdap.InsertPet(Name, null, ClientId, BreedId, About);
             }
             else {
                 t_petsTableAdap.InsertPet(Name, Bday, ClientId, BreedId, About);
@@ -81,7 +88,7 @@ namespace Monamur
             MonamurDBDataSetTableAdapters.PetsTableAdapter t_petsTableAdap = new MonamurDBDataSetTableAdapters.PetsTableAdapter();
             try
             {
-                if (ClientId == 0 || BreedId == 0)
+                /*if (ClientId == 0 || BreedId == 0)
                 {
                     if (BreedId == 0 && ClientId == 0)
                     {
@@ -96,6 +103,14 @@ namespace Monamur
                         t_petsTableAdap.UpdatePet(Name, Bday, ClientId, null, About, ALive, ID);
                     }
 
+                }
+                else
+                {
+                    t_petsTableAdap.UpdatePet(Name, Bday, ClientId, BreedId, About, ALive, ID);
+                }*/
+                if (Bday == DateTime.Parse("1900-01-01"))
+                {
+                    t_petsTableAdap.UpdatePet(Name, null, ClientId, BreedId, About, ALive, ID);
                 }
                 else
                 {
@@ -122,8 +137,14 @@ namespace Monamur
             v_petsTableAdap.FillById(v_petsDataTable, ID);
 
             Name = v_petsDataTable[0]["name"].ToString();
-            Bday = Convert.ToDateTime(v_petsDataTable[0]["bday"].ToString());
-            Age = Convert.ToInt32(v_petsDataTable[0]["age"]);
+            if (v_petsDataTable[0]["bday"].ToString() == "")
+            {
+                // Bday = Convert.ToDateTime("1900-01-01");
+            }
+            else {
+                Bday = Convert.ToDateTime(v_petsDataTable[0]["bday"].ToString());
+            }
+            //Age = Convert.ToInt32(v_petsDataTable[0]["age"]);
             ClientId = Convert.ToInt32(v_petsDataTable[0]["client_id"]); 
             ClientName = v_petsDataTable[0]["fio"].ToString(); 
             BreedId = Convert.ToInt32(v_petsDataTable[0]["breed_id"]);

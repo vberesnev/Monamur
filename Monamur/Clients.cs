@@ -15,8 +15,9 @@ namespace Monamur
         public string Social;
         public string About;
         public int Bonus;
+        public bool Sms;
 
-        public Clients(string fio, int character, string phone, string social, string about, int bonus)
+        public Clients(string fio, int character, string phone, string social, string about, int bonus, bool sms)
         {           
             Fio = fio;
             Character = character;
@@ -24,6 +25,7 @@ namespace Monamur
             Social = social;
             About = about;
             Bonus = bonus;
+            Sms = sms;
         }
 
         public Clients(){}
@@ -48,7 +50,7 @@ namespace Monamur
             try
             {
                 MonamurDBDataSetTableAdapters.ClientsTableAdapter t_clientsTableAdap = new MonamurDBDataSetTableAdapters.ClientsTableAdapter();
-                t_clientsTableAdap.InsertClient(Fio, Character, Phone, Social, About, Bonus);
+                t_clientsTableAdap.InsertClient(Fio, Character, Phone, Social, About, Bonus, Sms);
                 MonamurDBDataSet.ClientsDataTable t_clientsDT = new MonamurDBDataSet.ClientsDataTable();
                 t_clientsTableAdap.FillByFio(t_clientsDT, Fio);
                 ID = Convert.ToInt32(t_clientsDT.Rows[0]["id"]);
@@ -63,7 +65,7 @@ namespace Monamur
             try
             {
                 MonamurDBDataSetTableAdapters.ClientsTableAdapter t_clientsTableAdap = new MonamurDBDataSetTableAdapters.ClientsTableAdapter();
-                t_clientsTableAdap.UpdateClient(Fio, Character, Phone, Social, About, Bonus, ID);
+                t_clientsTableAdap.UpdateClient(Fio, Character, Phone, Social, About, Bonus, Sms, ID);
                 return true;
             }
             catch {
@@ -81,6 +83,7 @@ namespace Monamur
             Social = t_clientsDataTable.Rows[0]["social"].ToString(); 
             About = t_clientsDataTable.Rows[0]["about"].ToString(); 
             Bonus = Convert.ToInt32(t_clientsDataTable.Rows[0]["bonus"]);
+            Sms = (bool)t_clientsDataTable.Rows[0]["sms"];
         }
     }
 

@@ -29,6 +29,8 @@ namespace Monamur
             if (user.GetUserRole() != "Администратор")
             {
                 dlt_button.Enabled = false;
+                clients_dataGridView.Columns["phoneDataGridViewTextBoxColumn"].Visible = false;
+                clients_dataGridView.Columns["socialDataGridViewTextBoxColumn"].Visible = false;
             }
         }
 
@@ -71,11 +73,15 @@ namespace Monamur
                                          clients_dataGridView.SelectedRows[0].Cells["phoneDataGridViewTextBoxColumn"].Value.ToString(),
                                          clients_dataGridView.SelectedRows[0].Cells["socialDataGridViewTextBoxColumn"].Value.ToString(),
                                          clients_dataGridView.SelectedRows[0].Cells["aboutDataGridViewTextBoxColumn"].Value.ToString(),
-                                         Convert.ToInt32(clients_dataGridView.SelectedRows[0].Cells["bonusDataGridViewTextBoxColumn"].Value));
+                                         Convert.ToInt32(clients_dataGridView.SelectedRows[0].Cells["bonusDataGridViewTextBoxColumn"].Value),
+                                         Convert.ToBoolean(clients_dataGridView.SelectedRows[0].Cells["sms"].Value));
             client.ID = Convert.ToInt32(clients_dataGridView.SelectedRows[0].Cells["idDataGridViewTextBoxColumn"].Value);
+            int row = clients_dataGridView.CurrentRow.Index;
             EditClientForm ECF = new EditClientForm(client, user, false, false);
             ECF.ShowDialog();
             this.clientsTableAdapter.Fill(this.monamurDBDataSet.Clients);
+            SelectRow(client.ID);
+          
         }
 
         private void clients_dataGridView_DoubleClick(object sender, EventArgs e)
@@ -93,6 +99,7 @@ namespace Monamur
         private void cleartFilter_button_Click(object sender, EventArgs e)
         {
             phone_textBox.Clear();
+            smsAll_radioButton.Checked = true;
             mark_checkBox.Checked = false;
             markStart_numericUpDown.Value = 1;
             markStart_numericUpDown.Enabled = false;
@@ -139,6 +146,8 @@ namespace Monamur
 
         private void filter_button_Click(object sender, EventArgs e)
         {
+            clientsBindingSource.Filter = "";
+            this.clientsTableAdapter.Fill(this.monamurDBDataSet.Clients);
             if ((mark_checkBox.Checked == true) && (Convert.ToInt32(markStart_numericUpDown.Value) > Convert.ToInt32(markEnd_numericUpDown.Value)))
             {
                 MessageBox.Show("Не может начальная оценка быть больше конечной");
@@ -172,6 +181,20 @@ namespace Monamur
                 else {
 
                 }
+
+                if (smsAll_radioButton.Checked)
+                {
+                    string filter = String.Format("(sms = true OR sms = false)");
+                    clientsBindingSource.Filter = filter;
+                }
+                else {
+                    string textTofind = "";
+                    if (smsYes_radioButton.Checked) textTofind = "true";
+                    else textTofind = "false";
+                    string filter = String.Format("sms = {0}", textTofind);
+                    clientsBindingSource.Filter = filter;
+                }
+                
             }
 
             if (phone_textBox.Text != String.Empty) {
@@ -180,5 +203,12 @@ namespace Monamur
                 clientsBindingSource.Filter = filter;
             }
         }
+
+        public void SelectRow(int id)
+        {
+            clientsBindingSource.Position = clientsBindingSource.Find("id", id.ToString());
+        }
     }
+
+    
 }

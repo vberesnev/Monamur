@@ -42,13 +42,16 @@
             this.label2 = new System.Windows.Forms.Label();
             this.fio_textBox = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.labelPhone = new System.Windows.Forms.Label();
+            this.labelSocial = new System.Windows.Forms.Label();
+            this.sms_checkBox = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.character_numericUpDown)).BeginInit();
             this.SuspendLayout();
             // 
             // cancel_button
             // 
             this.cancel_button.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.cancel_button.Location = new System.Drawing.Point(152, 392);
+            this.cancel_button.Location = new System.Drawing.Point(152, 429);
             this.cancel_button.Name = "cancel_button";
             this.cancel_button.Size = new System.Drawing.Size(91, 27);
             this.cancel_button.TabIndex = 27;
@@ -59,7 +62,7 @@
             // save_button
             // 
             this.save_button.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.save_button.Location = new System.Drawing.Point(14, 392);
+            this.save_button.Location = new System.Drawing.Point(14, 429);
             this.save_button.Name = "save_button";
             this.save_button.Size = new System.Drawing.Size(91, 27);
             this.save_button.TabIndex = 26;
@@ -69,7 +72,7 @@
             // 
             // bonus_textBox
             // 
-            this.bonus_textBox.Location = new System.Drawing.Point(14, 349);
+            this.bonus_textBox.Location = new System.Drawing.Point(14, 386);
             this.bonus_textBox.Name = "bonus_textBox";
             this.bonus_textBox.Size = new System.Drawing.Size(91, 20);
             this.bonus_textBox.TabIndex = 25;
@@ -78,7 +81,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(11, 333);
+            this.label6.Location = new System.Drawing.Point(11, 370);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(45, 13);
             this.label6.TabIndex = 24;
@@ -86,7 +89,7 @@
             // 
             // about_textBox
             // 
-            this.about_textBox.Location = new System.Drawing.Point(14, 224);
+            this.about_textBox.Location = new System.Drawing.Point(14, 261);
             this.about_textBox.Multiline = true;
             this.about_textBox.Name = "about_textBox";
             this.about_textBox.Size = new System.Drawing.Size(229, 94);
@@ -95,7 +98,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(11, 208);
+            this.label5.Location = new System.Drawing.Point(11, 245);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(73, 13);
             this.label5.TabIndex = 22;
@@ -103,7 +106,7 @@
             // 
             // social_textBox
             // 
-            this.social_textBox.Location = new System.Drawing.Point(14, 176);
+            this.social_textBox.Location = new System.Drawing.Point(14, 216);
             this.social_textBox.Name = "social_textBox";
             this.social_textBox.Size = new System.Drawing.Size(229, 20);
             this.social_textBox.TabIndex = 21;
@@ -111,7 +114,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(11, 160);
+            this.label4.Location = new System.Drawing.Point(11, 200);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(55, 13);
             this.label4.TabIndex = 20;
@@ -119,7 +122,7 @@
             // 
             // phone_textBox
             // 
-            this.phone_textBox.Location = new System.Drawing.Point(14, 127);
+            this.phone_textBox.Location = new System.Drawing.Point(15, 133);
             this.phone_textBox.Name = "phone_textBox";
             this.phone_textBox.Size = new System.Drawing.Size(229, 20);
             this.phone_textBox.TabIndex = 19;
@@ -150,7 +153,7 @@
             this.character_numericUpDown.Size = new System.Drawing.Size(91, 20);
             this.character_numericUpDown.TabIndex = 17;
             this.character_numericUpDown.Value = new decimal(new int[] {
-            3,
+            1,
             0,
             0,
             0});
@@ -180,11 +183,40 @@
             this.label1.TabIndex = 14;
             this.label1.Text = "ФИО";
             // 
+            // labelPhone
+            // 
+            this.labelPhone.AutoSize = true;
+            this.labelPhone.Location = new System.Drawing.Point(12, 133);
+            this.labelPhone.Name = "labelPhone";
+            this.labelPhone.Size = new System.Drawing.Size(0, 13);
+            this.labelPhone.TabIndex = 28;
+            // 
+            // labelSocial
+            // 
+            this.labelSocial.AutoSize = true;
+            this.labelSocial.Location = new System.Drawing.Point(12, 219);
+            this.labelSocial.Name = "labelSocial";
+            this.labelSocial.Size = new System.Drawing.Size(0, 13);
+            this.labelSocial.TabIndex = 29;
+            // 
+            // sms_checkBox
+            // 
+            this.sms_checkBox.AutoSize = true;
+            this.sms_checkBox.Location = new System.Drawing.Point(15, 170);
+            this.sms_checkBox.Name = "sms_checkBox";
+            this.sms_checkBox.Size = new System.Drawing.Size(204, 17);
+            this.sms_checkBox.TabIndex = 30;
+            this.sms_checkBox.Text = "Согласен на получение сообщений";
+            this.sms_checkBox.UseVisualStyleBackColor = true;
+            // 
             // EditClientForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(254, 431);
+            this.ClientSize = new System.Drawing.Size(254, 461);
+            this.Controls.Add(this.sms_checkBox);
+            this.Controls.Add(this.labelSocial);
+            this.Controls.Add(this.labelPhone);
             this.Controls.Add(this.cancel_button);
             this.Controls.Add(this.save_button);
             this.Controls.Add(this.bonus_textBox);
@@ -202,6 +234,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "EditClientForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.Load += new System.EventHandler(this.EditClientForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.character_numericUpDown)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -224,5 +257,8 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox fio_textBox;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label labelPhone;
+        private System.Windows.Forms.Label labelSocial;
+        private System.Windows.Forms.CheckBox sms_checkBox;
     }
 }

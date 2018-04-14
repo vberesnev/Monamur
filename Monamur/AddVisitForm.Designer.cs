@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.visitDate_dateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -423,8 +423,8 @@
             // infoDataGridViewTextBoxColumn
             // 
             this.infoDataGridViewTextBoxColumn.DataPropertyName = "info";
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.infoDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.infoDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle1;
             this.infoDataGridViewTextBoxColumn.HeaderText = "Инфо";
             this.infoDataGridViewTextBoxColumn.Name = "infoDataGridViewTextBoxColumn";
             this.infoDataGridViewTextBoxColumn.ReadOnly = true;
@@ -564,7 +564,7 @@
             this.payment_comboBox.Name = "payment_comboBox";
             this.payment_comboBox.Size = new System.Drawing.Size(203, 21);
             this.payment_comboBox.TabIndex = 30;
-            this.payment_comboBox.Text = "КАРТОЙ";
+            this.payment_comboBox.Text = "НЕ ВЫБРАНО";
             // 
             // label15
             // 

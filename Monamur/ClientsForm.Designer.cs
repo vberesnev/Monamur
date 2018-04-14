@@ -38,12 +38,12 @@ namespace Monamur
             this.fioDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.characterDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.phoneDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.sms = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.socialDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.aboutDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.bonusDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.clientsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.monamurDBDataSet = new Monamur.MonamurDBDataSet();
-            this.clientsTableAdapter = new Monamur.MonamurDBDataSetTableAdapters.ClientsTableAdapter();
             this.label1 = new System.Windows.Forms.Label();
             this.dlt_button = new System.Windows.Forms.Button();
             this.edit_button = new System.Windows.Forms.Button();
@@ -51,6 +51,10 @@ namespace Monamur
             this.search_textBox = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.smsAll_radioButton = new System.Windows.Forms.RadioButton();
+            this.smsNo_radioButton = new System.Windows.Forms.RadioButton();
+            this.smsYes_radioButton = new System.Windows.Forms.RadioButton();
             this.bonus_checkBox = new System.Windows.Forms.CheckBox();
             this.mark_checkBox = new System.Windows.Forms.CheckBox();
             this.cleartFilter_button = new System.Windows.Forms.Button();
@@ -63,10 +67,12 @@ namespace Monamur
             this.markStart_numericUpDown = new System.Windows.Forms.NumericUpDown();
             this.phone_textBox = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
+            this.clientsTableAdapter = new Monamur.MonamurDBDataSetTableAdapters.ClientsTableAdapter();
             ((System.ComponentModel.ISupportInitialize)(this.clients_dataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.clientsBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.monamurDBDataSet)).BeginInit();
             this.groupBox2.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.markEnd_numericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.markStart_numericUpDown)).BeginInit();
             this.SuspendLayout();
@@ -90,6 +96,7 @@ namespace Monamur
             this.fioDataGridViewTextBoxColumn,
             this.characterDataGridViewTextBoxColumn,
             this.phoneDataGridViewTextBoxColumn,
+            this.sms,
             this.socialDataGridViewTextBoxColumn,
             this.aboutDataGridViewTextBoxColumn,
             this.bonusDataGridViewTextBoxColumn});
@@ -125,7 +132,7 @@ namespace Monamur
             this.characterDataGridViewTextBoxColumn.HeaderText = "Оценка";
             this.characterDataGridViewTextBoxColumn.Name = "characterDataGridViewTextBoxColumn";
             this.characterDataGridViewTextBoxColumn.ReadOnly = true;
-            this.characterDataGridViewTextBoxColumn.Width = 60;
+            this.characterDataGridViewTextBoxColumn.Width = 50;
             // 
             // phoneDataGridViewTextBoxColumn
             // 
@@ -134,6 +141,14 @@ namespace Monamur
             this.phoneDataGridViewTextBoxColumn.Name = "phoneDataGridViewTextBoxColumn";
             this.phoneDataGridViewTextBoxColumn.ReadOnly = true;
             this.phoneDataGridViewTextBoxColumn.Width = 120;
+            // 
+            // sms
+            // 
+            this.sms.DataPropertyName = "sms";
+            this.sms.HeaderText = "СМС";
+            this.sms.Name = "sms";
+            this.sms.ReadOnly = true;
+            this.sms.Width = 30;
             // 
             // socialDataGridViewTextBoxColumn
             // 
@@ -157,7 +172,7 @@ namespace Monamur
             this.bonusDataGridViewTextBoxColumn.HeaderText = "Бонусы";
             this.bonusDataGridViewTextBoxColumn.Name = "bonusDataGridViewTextBoxColumn";
             this.bonusDataGridViewTextBoxColumn.ReadOnly = true;
-            this.bonusDataGridViewTextBoxColumn.Width = 60;
+            this.bonusDataGridViewTextBoxColumn.Width = 50;
             // 
             // clientsBindingSource
             // 
@@ -168,10 +183,6 @@ namespace Monamur
             // 
             this.monamurDBDataSet.DataSetName = "MonamurDBDataSet";
             this.monamurDBDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // clientsTableAdapter
-            // 
-            this.clientsTableAdapter.ClearBeforeFill = true;
             // 
             // label1
             // 
@@ -237,6 +248,7 @@ namespace Monamur
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.groupBox1);
             this.groupBox2.Controls.Add(this.bonus_checkBox);
             this.groupBox2.Controls.Add(this.mark_checkBox);
             this.groupBox2.Controls.Add(this.cleartFilter_button);
@@ -251,15 +263,59 @@ namespace Monamur
             this.groupBox2.Controls.Add(this.label3);
             this.groupBox2.Location = new System.Drawing.Point(12, 40);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(195, 273);
+            this.groupBox2.Size = new System.Drawing.Size(195, 371);
             this.groupBox2.TabIndex = 4;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Фильтр";
             // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.smsAll_radioButton);
+            this.groupBox1.Controls.Add(this.smsNo_radioButton);
+            this.groupBox1.Controls.Add(this.smsYes_radioButton);
+            this.groupBox1.Location = new System.Drawing.Point(9, 74);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(180, 89);
+            this.groupBox1.TabIndex = 21;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "СМС информирование";
+            // 
+            // smsAll_radioButton
+            // 
+            this.smsAll_radioButton.AutoSize = true;
+            this.smsAll_radioButton.Checked = true;
+            this.smsAll_radioButton.Location = new System.Drawing.Point(7, 66);
+            this.smsAll_radioButton.Name = "smsAll_radioButton";
+            this.smsAll_radioButton.Size = new System.Drawing.Size(44, 17);
+            this.smsAll_radioButton.TabIndex = 2;
+            this.smsAll_radioButton.TabStop = true;
+            this.smsAll_radioButton.Text = "Все";
+            this.smsAll_radioButton.UseVisualStyleBackColor = true;
+            // 
+            // smsNo_radioButton
+            // 
+            this.smsNo_radioButton.AutoSize = true;
+            this.smsNo_radioButton.Location = new System.Drawing.Point(7, 43);
+            this.smsNo_radioButton.Name = "smsNo_radioButton";
+            this.smsNo_radioButton.Size = new System.Drawing.Size(44, 17);
+            this.smsNo_radioButton.TabIndex = 1;
+            this.smsNo_radioButton.Text = "Нет";
+            this.smsNo_radioButton.UseVisualStyleBackColor = true;
+            // 
+            // smsYes_radioButton
+            // 
+            this.smsYes_radioButton.AutoSize = true;
+            this.smsYes_radioButton.Location = new System.Drawing.Point(7, 20);
+            this.smsYes_radioButton.Name = "smsYes_radioButton";
+            this.smsYes_radioButton.Size = new System.Drawing.Size(40, 17);
+            this.smsYes_radioButton.TabIndex = 0;
+            this.smsYes_radioButton.Text = "Да";
+            this.smsYes_radioButton.UseVisualStyleBackColor = true;
+            // 
             // bonus_checkBox
             // 
             this.bonus_checkBox.AutoSize = true;
-            this.bonus_checkBox.Location = new System.Drawing.Point(9, 167);
+            this.bonus_checkBox.Location = new System.Drawing.Point(9, 262);
             this.bonus_checkBox.Name = "bonus_checkBox";
             this.bonus_checkBox.Size = new System.Drawing.Size(100, 17);
             this.bonus_checkBox.TabIndex = 20;
@@ -270,7 +326,7 @@ namespace Monamur
             // mark_checkBox
             // 
             this.mark_checkBox.AutoSize = true;
-            this.mark_checkBox.Location = new System.Drawing.Point(9, 87);
+            this.mark_checkBox.Location = new System.Drawing.Point(9, 182);
             this.mark_checkBox.Name = "mark_checkBox";
             this.mark_checkBox.Size = new System.Drawing.Size(99, 17);
             this.mark_checkBox.TabIndex = 19;
@@ -280,7 +336,7 @@ namespace Monamur
             // 
             // cleartFilter_button
             // 
-            this.cleartFilter_button.Location = new System.Drawing.Point(114, 236);
+            this.cleartFilter_button.Location = new System.Drawing.Point(114, 331);
             this.cleartFilter_button.Name = "cleartFilter_button";
             this.cleartFilter_button.Size = new System.Drawing.Size(75, 25);
             this.cleartFilter_button.TabIndex = 18;
@@ -290,7 +346,7 @@ namespace Monamur
             // 
             // filter_button
             // 
-            this.filter_button.Location = new System.Drawing.Point(6, 236);
+            this.filter_button.Location = new System.Drawing.Point(6, 331);
             this.filter_button.Name = "filter_button";
             this.filter_button.Size = new System.Drawing.Size(75, 25);
             this.filter_button.TabIndex = 17;
@@ -301,7 +357,7 @@ namespace Monamur
             // bonusEnd_textBox
             // 
             this.bonusEnd_textBox.Enabled = false;
-            this.bonusEnd_textBox.Location = new System.Drawing.Point(114, 193);
+            this.bonusEnd_textBox.Location = new System.Drawing.Point(114, 288);
             this.bonusEnd_textBox.Name = "bonusEnd_textBox";
             this.bonusEnd_textBox.Size = new System.Drawing.Size(57, 20);
             this.bonusEnd_textBox.TabIndex = 16;
@@ -310,7 +366,7 @@ namespace Monamur
             // bonusStart_textBox
             // 
             this.bonusStart_textBox.Enabled = false;
-            this.bonusStart_textBox.Location = new System.Drawing.Point(114, 164);
+            this.bonusStart_textBox.Location = new System.Drawing.Point(114, 259);
             this.bonusStart_textBox.Name = "bonusStart_textBox";
             this.bonusStart_textBox.Size = new System.Drawing.Size(57, 20);
             this.bonusStart_textBox.TabIndex = 15;
@@ -319,7 +375,7 @@ namespace Monamur
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(86, 196);
+            this.label6.Location = new System.Drawing.Point(86, 291);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(19, 13);
             this.label6.TabIndex = 14;
@@ -328,7 +384,7 @@ namespace Monamur
             // markEnd_numericUpDown
             // 
             this.markEnd_numericUpDown.Enabled = false;
-            this.markEnd_numericUpDown.Location = new System.Drawing.Point(114, 117);
+            this.markEnd_numericUpDown.Location = new System.Drawing.Point(114, 212);
             this.markEnd_numericUpDown.Maximum = new decimal(new int[] {
             5,
             0,
@@ -351,7 +407,7 @@ namespace Monamur
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(86, 117);
+            this.label5.Location = new System.Drawing.Point(86, 212);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(19, 13);
             this.label5.TabIndex = 11;
@@ -360,7 +416,7 @@ namespace Monamur
             // markStart_numericUpDown
             // 
             this.markStart_numericUpDown.Enabled = false;
-            this.markStart_numericUpDown.Location = new System.Drawing.Point(114, 84);
+            this.markStart_numericUpDown.Location = new System.Drawing.Point(114, 179);
             this.markStart_numericUpDown.Maximum = new decimal(new int[] {
             5,
             0,
@@ -396,6 +452,10 @@ namespace Monamur
             this.label3.TabIndex = 7;
             this.label3.Text = "Номер телефона";
             // 
+            // clientsTableAdapter
+            // 
+            this.clientsTableAdapter.ClearBeforeFill = true;
+            // 
             // ClientsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -419,6 +479,8 @@ namespace Monamur
             ((System.ComponentModel.ISupportInitialize)(this.monamurDBDataSet)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.markEnd_numericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.markStart_numericUpDown)).EndInit();
             this.ResumeLayout(false);
@@ -438,13 +500,6 @@ namespace Monamur
         private System.Windows.Forms.Button add_button;
         private System.Windows.Forms.TextBox search_textBox;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn fioDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn characterDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn phoneDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn socialDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn aboutDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn bonusDataGridViewTextBoxColumn;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.TextBox phone_textBox;
         private System.Windows.Forms.Label label3;
@@ -458,5 +513,17 @@ namespace Monamur
         private System.Windows.Forms.CheckBox mark_checkBox;
         private System.Windows.Forms.Button cleartFilter_button;
         private System.Windows.Forms.Button filter_button;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn fioDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn characterDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn phoneDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn sms;
+        private System.Windows.Forms.DataGridViewTextBoxColumn socialDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn aboutDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn bonusDataGridViewTextBoxColumn;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.RadioButton smsAll_radioButton;
+        private System.Windows.Forms.RadioButton smsNo_radioButton;
+        private System.Windows.Forms.RadioButton smsYes_radioButton;
     }
 }

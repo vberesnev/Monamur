@@ -36,8 +36,7 @@
             this.selectClient_button = new System.Windows.Forms.Button();
             this.bday_radioButton = new System.Windows.Forms.RadioButton();
             this.bday_dateTimePicker = new System.Windows.Forms.DateTimePicker();
-            this.age_radioButton = new System.Windows.Forms.RadioButton();
-            this.age_textBox = new System.Windows.Forms.TextBox();
+            this.unknownBD_radioButton = new System.Windows.Forms.RadioButton();
             this.selectBreed_button = new System.Windows.Forms.Button();
             this.breed_textBox = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
@@ -119,25 +118,16 @@
             this.bday_dateTimePicker.TabIndex = 6;
             this.bday_dateTimePicker.ValueChanged += new System.EventHandler(this.bday_dateTimePicker_ValueChanged);
             // 
-            // age_radioButton
+            // unknownBD_radioButton
             // 
-            this.age_radioButton.AutoSize = true;
-            this.age_radioButton.Location = new System.Drawing.Point(16, 273);
-            this.age_radioButton.Name = "age_radioButton";
-            this.age_radioButton.Size = new System.Drawing.Size(67, 17);
-            this.age_radioButton.TabIndex = 7;
-            this.age_radioButton.Text = "Возраст";
-            this.age_radioButton.UseVisualStyleBackColor = true;
-            this.age_radioButton.CheckedChanged += new System.EventHandler(this.age_radioButton_CheckedChanged);
-            // 
-            // age_textBox
-            // 
-            this.age_textBox.Location = new System.Drawing.Point(89, 272);
-            this.age_textBox.Name = "age_textBox";
-            this.age_textBox.ReadOnly = true;
-            this.age_textBox.Size = new System.Drawing.Size(64, 20);
-            this.age_textBox.TabIndex = 8;
-            this.age_textBox.Text = "0";
+            this.unknownBD_radioButton.AutoSize = true;
+            this.unknownBD_radioButton.Location = new System.Drawing.Point(16, 273);
+            this.unknownBD_radioButton.Name = "unknownBD_radioButton";
+            this.unknownBD_radioButton.Size = new System.Drawing.Size(103, 17);
+            this.unknownBD_radioButton.TabIndex = 7;
+            this.unknownBD_radioButton.Text = "ДР неизвестен";
+            this.unknownBD_radioButton.UseVisualStyleBackColor = true;
+            this.unknownBD_radioButton.CheckedChanged += new System.EventHandler(this.unknownBD_radioButton_CheckedChanged);
             // 
             // selectBreed_button
             // 
@@ -255,8 +245,7 @@
             this.Controls.Add(this.selectBreed_button);
             this.Controls.Add(this.breed_textBox);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.age_textBox);
-            this.Controls.Add(this.age_radioButton);
+            this.Controls.Add(this.unknownBD_radioButton);
             this.Controls.Add(this.bday_dateTimePicker);
             this.Controls.Add(this.bday_radioButton);
             this.Controls.Add(this.selectClient_button);
@@ -285,8 +274,7 @@
         private System.Windows.Forms.Button selectClient_button;
         private System.Windows.Forms.RadioButton bday_radioButton;
         private System.Windows.Forms.DateTimePicker bday_dateTimePicker;
-        private System.Windows.Forms.RadioButton age_radioButton;
-        private System.Windows.Forms.TextBox age_textBox;
+        private System.Windows.Forms.RadioButton unknownBD_radioButton;
         private System.Windows.Forms.Button selectBreed_button;
         private System.Windows.Forms.TextBox breed_textBox;
         private System.Windows.Forms.Label label3;

@@ -126,10 +126,13 @@ namespace Monamur
             if (pets_dataGridView.SelectedRows.Count != 0) {
                 Pets editPet = new Pets();
                 editPet.ID = Convert.ToInt32(pets_dataGridView.SelectedRows[0].Cells["idDataGridViewTextBoxColumn"].Value);
-                editPet.GetInfo();
+                //editPet.GetInfo();
+               
                 EditPetForm EPF = new EditPetForm(editPet, user, false, false);
                 EPF.ShowDialog();
                 this.v_petsTableAdapter.Fill(this.monamurDBDataSet.V_pets);
+                SelectRow(editPet.ID);
+                
             }
         }
 
@@ -285,6 +288,11 @@ namespace Monamur
             between_radioButton.Checked = false;
             vpetsBindingSource.Filter = "";
             this.v_petsTableAdapter.Fill(this.monamurDBDataSet.V_pets);
+        }
+
+        public void SelectRow(int id)
+        {
+            vpetsBindingSource.Position = vpetsBindingSource.Find("id", id.ToString());
         }
     }
 }

@@ -117,11 +117,13 @@ namespace Monamur
                 {
                     Visit editVisit = new Visit();
                     editVisit.ID = Convert.ToInt32(visitList_dataGridView.SelectedRows[0].Cells["idDataGridViewTextBoxColumn"].Value);
+                   
                     editVisit.GetInfo();
                     EditVisitForm EVF = new EditVisitForm(user, editVisit);
                     EVF.ShowDialog();
                     GetVisitsByDate(Convert.ToDateTime(visits_dateTimePicker.Value.Date.ToShortDateString() + " 0:00:00"),
                                  Convert.ToDateTime(visits_dateTimePicker.Value.Date.ToShortDateString() + " 23:59:59"));
+                    SelectRow(editVisit.ID);
                 }
             }
         }
@@ -218,6 +220,11 @@ namespace Monamur
                 sum += Convert.ToInt32(row.Cells["sumDataGridViewTextBoxColumn"].Value);
             }
             return sum;
+        }
+
+        public void SelectRow(int id)
+        {
+            vvisitesBindingSource.Position = vvisitesBindingSource.Find("id", id.ToString());
         }
     }
 }
