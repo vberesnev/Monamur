@@ -50,6 +50,8 @@ namespace Monamur
         private void addUser_button_Click(object sender, EventArgs e)
         {
             AddUserForm AUF = new AddUserForm(user);
+            Container container = this.MdiParent as Container;
+            container.MakeFormHooks(AUF);
             AUF.ShowDialog();
             this.v_usersTableAdapter.Fill(this.monamurDBDataSet.V_users);
         }
@@ -64,6 +66,8 @@ namespace Monamur
             {
                 MyProfileForm MPF = new MyProfileForm(user, menuItem);
                 MPF.MdiParent = this.MdiParent;
+                Container container = this.MdiParent as Container;
+                container.MakeFormHooks(MPF);
                 MPF.Show();
                 this.Close();
             }

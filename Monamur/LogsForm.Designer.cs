@@ -35,6 +35,10 @@
             this.dayMinus_button = new System.Windows.Forms.Button();
             this.dayPlus_button = new System.Windows.Forms.Button();
             this.logs_dataGridView = new System.Windows.Forms.DataGridView();
+            this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.datetimeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.loginDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.logtextDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.vlogsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.monamurDBDataSet = new Monamur.MonamurDBDataSet();
             this.v_logsTableAdapter = new Monamur.MonamurDBDataSetTableAdapters.V_logsTableAdapter();
@@ -44,10 +48,9 @@
             this.v_usersTableAdapter = new Monamur.MonamurDBDataSetTableAdapters.V_usersTableAdapter();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.datetimeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.loginDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.logtextDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.label2 = new System.Windows.Forms.Label();
+            this.search_textBox = new System.Windows.Forms.TextBox();
+            this.search_button = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.logs_dataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.vlogsBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.monamurDBDataSet)).BeginInit();
@@ -113,6 +116,39 @@
             this.logs_dataGridView.RowTemplate.Height = 30;
             this.logs_dataGridView.Size = new System.Drawing.Size(1150, 480);
             this.logs_dataGridView.TabIndex = 3;
+            // 
+            // idDataGridViewTextBoxColumn
+            // 
+            this.idDataGridViewTextBoxColumn.DataPropertyName = "Id";
+            this.idDataGridViewTextBoxColumn.HeaderText = "Id";
+            this.idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
+            this.idDataGridViewTextBoxColumn.ReadOnly = true;
+            this.idDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // datetimeDataGridViewTextBoxColumn
+            // 
+            this.datetimeDataGridViewTextBoxColumn.DataPropertyName = "datetime";
+            this.datetimeDataGridViewTextBoxColumn.HeaderText = "Дата/время";
+            this.datetimeDataGridViewTextBoxColumn.Name = "datetimeDataGridViewTextBoxColumn";
+            this.datetimeDataGridViewTextBoxColumn.ReadOnly = true;
+            this.datetimeDataGridViewTextBoxColumn.Width = 120;
+            // 
+            // loginDataGridViewTextBoxColumn
+            // 
+            this.loginDataGridViewTextBoxColumn.DataPropertyName = "login";
+            this.loginDataGridViewTextBoxColumn.HeaderText = "Логин";
+            this.loginDataGridViewTextBoxColumn.Name = "loginDataGridViewTextBoxColumn";
+            this.loginDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // logtextDataGridViewTextBoxColumn
+            // 
+            this.logtextDataGridViewTextBoxColumn.DataPropertyName = "log_text";
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.logtextDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle2;
+            this.logtextDataGridViewTextBoxColumn.HeaderText = "История";
+            this.logtextDataGridViewTextBoxColumn.Name = "logtextDataGridViewTextBoxColumn";
+            this.logtextDataGridViewTextBoxColumn.ReadOnly = true;
+            this.logtextDataGridViewTextBoxColumn.Width = 895;
             // 
             // vlogsBindingSource
             // 
@@ -183,44 +219,40 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Фильтры";
             // 
-            // idDataGridViewTextBoxColumn
+            // label2
             // 
-            this.idDataGridViewTextBoxColumn.DataPropertyName = "Id";
-            this.idDataGridViewTextBoxColumn.HeaderText = "Id";
-            this.idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
-            this.idDataGridViewTextBoxColumn.ReadOnly = true;
-            this.idDataGridViewTextBoxColumn.Visible = false;
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(635, 32);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(145, 13);
+            this.label2.TabIndex = 17;
+            this.label2.Text = "Поиск по ключевому слову";
             // 
-            // datetimeDataGridViewTextBoxColumn
+            // search_textBox
             // 
-            this.datetimeDataGridViewTextBoxColumn.DataPropertyName = "datetime";
-            this.datetimeDataGridViewTextBoxColumn.HeaderText = "Дата/время";
-            this.datetimeDataGridViewTextBoxColumn.Name = "datetimeDataGridViewTextBoxColumn";
-            this.datetimeDataGridViewTextBoxColumn.ReadOnly = true;
-            this.datetimeDataGridViewTextBoxColumn.Width = 120;
+            this.search_textBox.Location = new System.Drawing.Point(638, 52);
+            this.search_textBox.Name = "search_textBox";
+            this.search_textBox.Size = new System.Drawing.Size(170, 20);
+            this.search_textBox.TabIndex = 18;
             // 
-            // loginDataGridViewTextBoxColumn
+            // search_button
             // 
-            this.loginDataGridViewTextBoxColumn.DataPropertyName = "login";
-            this.loginDataGridViewTextBoxColumn.HeaderText = "Логин";
-            this.loginDataGridViewTextBoxColumn.Name = "loginDataGridViewTextBoxColumn";
-            this.loginDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // logtextDataGridViewTextBoxColumn
-            // 
-            this.logtextDataGridViewTextBoxColumn.DataPropertyName = "log_text";
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.logtextDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle2;
-            this.logtextDataGridViewTextBoxColumn.HeaderText = "История";
-            this.logtextDataGridViewTextBoxColumn.Name = "logtextDataGridViewTextBoxColumn";
-            this.logtextDataGridViewTextBoxColumn.ReadOnly = true;
-            this.logtextDataGridViewTextBoxColumn.Width = 895;
+            this.search_button.Location = new System.Drawing.Point(827, 49);
+            this.search_button.Name = "search_button";
+            this.search_button.Size = new System.Drawing.Size(75, 23);
+            this.search_button.TabIndex = 19;
+            this.search_button.Text = "Искать";
+            this.search_button.UseVisualStyleBackColor = true;
+            this.search_button.Click += new System.EventHandler(this.search_button_Click);
             // 
             // LogsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1175, 580);
+            this.Controls.Add(this.search_button);
+            this.Controls.Add(this.search_textBox);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.logs_dataGridView);
@@ -262,5 +294,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn datetimeDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn loginDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn logtextDataGridViewTextBoxColumn;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox search_textBox;
+        private System.Windows.Forms.Button search_button;
     }
 }

@@ -86,6 +86,8 @@ namespace Monamur
         private void add_button_Click(object sender, EventArgs e)
         {
             AddProcedureForm APF = new AddProcedureForm(user);
+            Container container = this.Owner as Container;
+            container.MakeFormHooks(APF);
             APF.ShowDialog();
             if (procedures_tabControl.SelectedTab.Name == "dogs_tabPage")
             {
@@ -128,6 +130,8 @@ namespace Monamur
                     editProcedure.Info = dgw.SelectedRows[0].Cells[5].Value.ToString();*/
 
                     EditProcedureForm EPF = new EditProcedureForm(editProcedure, user);
+                    Container container = this.Owner as Container;
+                    container.MakeFormHooks(EPF);
                     EPF.ShowDialog();
                     if (procedures_tabControl.SelectedTab.Name == "dogs_tabPage")
                     {

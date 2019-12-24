@@ -55,6 +55,8 @@ namespace Monamur
         private void changePass_button_Click(object sender, EventArgs e)
         {
             ChangePasswordForm CPF = new ChangePasswordForm(user);
+            Container container = this.MdiParent as Container;
+            container.MakeFormHooks(CPF);
             CPF.ShowDialog();
         }
 

@@ -26,9 +26,11 @@ namespace Monamur
             this.v_usersTableAdapter.FillByMaster(this.monamurDBDataSet.V_users);
             GetVisitsByDate(Convert.ToDateTime(visits_dateTimePicker.Value.Date.ToShortDateString() + " 0:00:00"),
                               Convert.ToDateTime(visits_dateTimePicker.Value.Date.ToShortDateString() + " 23:59:59"));
-            if (user.GetUserRole() != "Администратор") {
+            /*if (user.GetUserRole() != "Администратор") {
                 deleteVisit_button.Enabled = false;
-            }
+                sum_textBox.Visible = false;
+                label7.Visible = false;
+            }*/
         }
 
         private void GetVisitsByDate(DateTime date1, DateTime date2)
@@ -65,6 +67,8 @@ namespace Monamur
         private void addVisit_button_Click(object sender, EventArgs e)
         {
             AddVisitForm AVF = new AddVisitForm(user);
+            Container container = this.MdiParent as Container;
+            container.MakeFormHooks(AVF);
             AVF.ShowDialog();
             GetVisitsByDate(Convert.ToDateTime(visits_dateTimePicker.Value.Date.ToShortDateString() + " 0:00:00"),
                              Convert.ToDateTime(visits_dateTimePicker.Value.Date.ToShortDateString() + " 23:59:59"));
@@ -120,6 +124,8 @@ namespace Monamur
                    
                     editVisit.GetInfo();
                     EditVisitForm EVF = new EditVisitForm(user, editVisit);
+                    Container container = this.MdiParent as Container;
+                    container.MakeFormHooks(EVF);
                     EVF.ShowDialog();
                     GetVisitsByDate(Convert.ToDateTime(visits_dateTimePicker.Value.Date.ToShortDateString() + " 0:00:00"),
                                  Convert.ToDateTime(visits_dateTimePicker.Value.Date.ToShortDateString() + " 23:59:59"));
@@ -216,8 +222,22 @@ namespace Monamur
 
         private int GetSum() {
             int sum = 0;
-            foreach (DataGridViewRow row in visitList_dataGridView.Rows) {
-                sum += Convert.ToInt32(row.Cells["sumDataGridViewTextBoxColumn"].Value);
+            if (user.GetUserRole() == "Администратор")
+            {
+                foreach (DataGridViewRow row in visitList_dataGridView.Rows)
+                {
+                    if (Convert.ToBoolean(row.Cells["status"].Value))
+                        sum += Convert.ToInt32(row.Cells["sumDataGridViewTextBoxColumn"].Value);
+                }
+            }
+            else
+            {
+                foreach (DataGridViewRow row in visitList_dataGridView.Rows)
+                {
+                    if (user.Login == row.Cells["login"].Value.ToString() && Convert.ToBoolean(row.Cells["status"].Value))
+                        sum += Convert.ToInt32(row.Cells["sumDataGridViewTextBoxColumn"].Value);
+                }
+
             }
             return sum;
         }

@@ -117,6 +117,8 @@ namespace Monamur
         private void add_button_Click(object sender, EventArgs e)
         {
             AddPetForm APF = new AddPetForm(user);
+            Container container = this.MdiParent as Container;
+            container.MakeFormHooks(APF);
             APF.ShowDialog();
             this.v_petsTableAdapter.Fill(this.monamurDBDataSet.V_pets);
         }
@@ -129,6 +131,8 @@ namespace Monamur
                 //editPet.GetInfo();
                
                 EditPetForm EPF = new EditPetForm(editPet, user, false, false);
+                Container container = this.MdiParent as Container;
+                container.MakeFormHooks(EPF);
                 EPF.ShowDialog();
                 this.v_petsTableAdapter.Fill(this.monamurDBDataSet.V_pets);
                 SelectRow(editPet.ID);

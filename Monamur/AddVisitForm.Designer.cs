@@ -84,6 +84,7 @@
             this.v_usersTableAdapter = new Monamur.MonamurDBDataSetTableAdapters.V_usersTableAdapter();
             this.payment_comboBox = new System.Windows.Forms.ComboBox();
             this.label15 = new System.Windows.Forms.Label();
+            this.labelPhone = new System.Windows.Forms.Label();
             this.proc_groupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.visitProc_dataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.procList_dataGridView)).BeginInit();
@@ -214,7 +215,7 @@
             // 
             // phone_textBox
             // 
-            this.phone_textBox.Location = new System.Drawing.Point(65, 245);
+            this.phone_textBox.Location = new System.Drawing.Point(65, 241);
             this.phone_textBox.Name = "phone_textBox";
             this.phone_textBox.ReadOnly = true;
             this.phone_textBox.Size = new System.Drawing.Size(201, 20);
@@ -575,11 +576,20 @@
             this.label15.TabIndex = 29;
             this.label15.Text = "Оплата";
             // 
+            // labelPhone
+            // 
+            this.labelPhone.AutoSize = true;
+            this.labelPhone.Location = new System.Drawing.Point(65, 248);
+            this.labelPhone.Name = "labelPhone";
+            this.labelPhone.Size = new System.Drawing.Size(0, 13);
+            this.labelPhone.TabIndex = 31;
+            // 
             // AddVisitForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(979, 571);
+            this.Controls.Add(this.labelPhone);
             this.Controls.Add(this.payment_comboBox);
             this.Controls.Add(this.label15);
             this.Controls.Add(this.master_comboBox);
@@ -685,5 +695,6 @@
         private MonamurDBDataSetTableAdapters.V_usersTableAdapter v_usersTableAdapter;
         private System.Windows.Forms.ComboBox payment_comboBox;
         private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.Label labelPhone;
     }
 }

@@ -285,6 +285,20 @@ namespace Monamur
             this.v_usersTableAdapter.FillByMaster(this.monamurDBDataSet.V_users);
             master_comboBox.SelectedValue = editVisit.UserID;
 
+            if (user.GetUserRole() != "Администратор")
+            {
+                phone_textBox.Visible = false;
+                char[] charPhone = phone_textBox.Text.ToCharArray();
+                for (int i = 0; i < charPhone.Length - 3; i++)
+                {
+                    labelPhone.Text += "* ";
+                }
+                for (int j = charPhone.Length - 3; j < charPhone.Length; j++)
+                {
+                    labelPhone.Text += charPhone[j] + " ";
+                }
+            }
+
         }
 
         private void status_button_Click(object sender, EventArgs e)

@@ -92,7 +92,15 @@ namespace Monamur
             {
                 phone_textBox.Visible = false;
                 social_textBox.Visible = false;
-                labelPhone.Text = "Информация недоступна";
+                char[] charPhone = phone_textBox.Text.ToCharArray();
+                for (int i = 0; i < charPhone.Length - 3; i++) {
+                    labelPhone.Text += "* ";
+                }
+                for (int j = charPhone.Length - 3; j < charPhone.Length; j++) {
+                    labelPhone.Text += charPhone[j]+" ";
+                }
+
+                //labelPhone.Text = "Информация недоступна";
                 labelSocial.Text = "Информация недоступна";
             }
         }

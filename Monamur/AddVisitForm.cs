@@ -34,7 +34,7 @@ namespace Monamur
             {
                 master_comboBox.SelectedValue = user.ID;
             }
-
+            
         }
 
         private void cancel_button_Click(object sender, EventArgs e)
@@ -49,6 +49,19 @@ namespace Monamur
             SPF.ShowDialog();
             if (pet_textBox.Text != String.Empty) {
                 GetProcedureList(pet);
+            }
+            if (user.GetUserRole() != "Администратор")
+            {
+                phone_textBox.Visible = false;
+                char[] charPhone = phone_textBox.Text.ToCharArray();
+                for (int i = 0; i < charPhone.Length - 3; i++)
+                {
+                    labelPhone.Text += "* ";
+                }
+                for (int j = charPhone.Length - 3; j < charPhone.Length; j++)
+                {
+                    labelPhone.Text += charPhone[j] + " ";
+                }
             }
         }
 

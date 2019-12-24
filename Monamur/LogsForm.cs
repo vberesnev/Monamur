@@ -35,6 +35,12 @@ namespace Monamur
             this.v_logsTableAdapter.FillByDateAndLogin(this.monamurDBDataSet.V_logs, date1, date2, login);
         }
 
+        private void GetLogsByText(string text)
+        {
+            this.v_logsTableAdapter.FillByText(this.monamurDBDataSet.V_logs, text);
+        }
+
+
         private void dayMinus_button_Click(object sender, EventArgs e)
         {
             logs_dateTimePicker.Value =  logs_dateTimePicker.Value.AddDays(-1);
@@ -111,6 +117,11 @@ namespace Monamur
                 GetLogsByDate(Convert.ToDateTime(logs_dateTimePicker.Value.Date.ToShortDateString() + " 0:00:00"),
                               Convert.ToDateTime(logs_dateTimePicker.Value.Date.ToShortDateString() + " 23:59:59"));
             }
+        }
+
+        private void search_button_Click(object sender, EventArgs e)
+        {
+            GetLogsByText("%" + search_textBox.Text + "%");
         }
     }
 }

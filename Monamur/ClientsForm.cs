@@ -62,6 +62,8 @@ namespace Monamur
         private void add_button_Click(object sender, EventArgs e)
         {
             AddClientForm ACF = new AddClientForm(user);
+            Container container = this.MdiParent as Container;
+            container.MakeFormHooks(ACF);
             ACF.ShowDialog();
             this.clientsTableAdapter.Fill(this.monamurDBDataSet.Clients);
         }
@@ -78,6 +80,8 @@ namespace Monamur
             client.ID = Convert.ToInt32(clients_dataGridView.SelectedRows[0].Cells["idDataGridViewTextBoxColumn"].Value);
             int row = clients_dataGridView.CurrentRow.Index;
             EditClientForm ECF = new EditClientForm(client, user, false, false);
+            Container container = this.MdiParent as Container;
+            container.MakeFormHooks(ECF);
             ECF.ShowDialog();
             this.clientsTableAdapter.Fill(this.monamurDBDataSet.Clients);
             SelectRow(client.ID);
